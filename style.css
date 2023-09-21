@@ -14,3 +14,80 @@
 html {
   font-size: 62.5%;
 }
+
+.app {
+  max-width: 120rem;
+  margin: 4.8rem auto;
+  color: #343a40;
+}
+
+.heading {
+  font-size: 4.8rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.divider {
+  background-color: #495057;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+  width: 25%;
+  margin: 0 auto;
+  margin-bottom: 2.4rem;
+  border: none;
+}
+
+.description {
+  font-size: 2rem;
+  margin-bottom: 3.6rem;
+}
+
+.country-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 8rem;
+}
+
+.country {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0rem 0rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.country-data {
+  padding: 2rem 4rem;
+  font-size: 2rem;
+}
+
+.country-flag {
+  width: 100%;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  /* margin-bottom: 2rem; */
+  /* object-fit: cover; */
+}
+
+.country-header {
+  margin-bottom: 2.4rem;
+}
+
+.country-name {
+  font-size: 2.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.country-region {
+  font-size: 1.4rem;
+  color: #495057;
+  text-transform: uppercase;
+}
+
+.country-row:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.country-row span {
+  width: 2rem;
+  display: inline-block;
+  margin-right: 1.6rem;
+}
