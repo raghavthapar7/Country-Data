@@ -44,8 +44,10 @@ html {
 
 .country-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 33rem);
+  justify-content: center;
   column-gap: 8rem;
+  row-gap: 4rem;
 }
 
 .country {
@@ -55,12 +57,13 @@ html {
 }
 
 .country-data {
-  padding: 2rem 4rem;
+  padding: 2.8rem 4rem;
   font-size: 2rem;
 }
 
 .country-flag {
   width: 100%;
+  height: 21rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   /* margin-bottom: 2rem; */
@@ -90,4 +93,8 @@ html {
   width: 2rem;
   display: inline-block;
   margin-right: 1.6rem;
+}
+
+.country-row {
+  text-transform: capitalize;
 }

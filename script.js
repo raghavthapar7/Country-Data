@@ -25,7 +25,7 @@ const showCountryData = function (country) {
                 />
                 <div class="country-data">
                     <div class="country-header">
-                        <h2 class="country-name">${data.name.official}</h2>
+                        <h2 class="country-name">${data.name.common}</h2>
                         <h3 class="country-region">${data.region}</h3>
                     </div>
 
@@ -43,6 +43,7 @@ const showCountryData = function (country) {
 `;
 
     //   console.log(Object.values(data.currencies)[0].name);
+    console.log(data);
     countryContainer.insertAdjacentHTML("beforeend", html);
   });
 };
