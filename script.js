@@ -3,20 +3,21 @@
 const app = document.querySelector(".app");
 const countryContainer = document.querySelector(".country-container");
 
-// Making a AJAX call
-const request = new XMLHttpRequest();
+const showCountryData = function (country) {
+  // Making a AJAX call
+  const request = new XMLHttpRequest();
 
-// Making a GET request with the URL of the API
-request.open("GET", "https://restcountries.com/v3.1/name/Republic of India");
+  // Making a GET request with the URL of the API
+  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
 
-// Sending the request to the API
-request.send();
+  // Sending the request to the API
+  request.send();
 
-request.addEventListener("load", function () {
-  // Parsing the recieved data by destructuring the response
-  const [data] = JSON.parse(request.responseText);
+  request.addEventListener("load", function () {
+    // Parsing the recieved data by destructuring the response
+    const [data] = JSON.parse(request.responseText);
 
-  const html = `<article class="country">
+    const html = `<article class="country">
                 <img
                     class="country-flag"
                     src=${data.flags.png}
@@ -41,6 +42,12 @@ request.addEventListener("load", function () {
             </article>
 `;
 
-  //   console.log(Object.values(data.currencies)[0].name);
-  countryContainer.insertAdjacentHTML("beforeend", html);
-});
+    //   console.log(Object.values(data.currencies)[0].name);
+    countryContainer.insertAdjacentHTML("beforeend", html);
+  });
+};
+
+showCountryData("Republic of India");
+showCountryData("USA");
+showCountryData("Portugal");
+showCountryData("Spain");
