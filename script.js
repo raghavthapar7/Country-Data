@@ -55,6 +55,9 @@ showCountryData("Spain");
  */
 
 // New way of doing stuff
-const request = fetch("https://restcountries.com/v3.1/name/portugal");
 
-console.log(request);
+fetch("https://restcountries.com/v3.1/name/portugal")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data[0]);
+  });
