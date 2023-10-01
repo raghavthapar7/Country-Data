@@ -8,7 +8,7 @@ const btnFailFetch = document.querySelector(".fail-call");
 const renderError = function (err) {
   countryContainer.insertAdjacentHTML("beforeend", err);
 
-  countryContainer.style.opacity = 1;
+  // countryContainer.style.opacity = 1;
 };
 
 // New way of doing stuff
@@ -40,7 +40,8 @@ const renderCountry = function (data) {
 
   // Adding the data to the HTML file
   countryContainer.insertAdjacentHTML("beforeend", html);
-  countryContainer.style.opacity = 1;
+  // countryContainer.style.opacity = 1;
+  btnFailFetch.textContent = "Fail the fetch!";
 };
 
 const getCountryData = function (country) {
@@ -55,7 +56,12 @@ const getCountryData = function (country) {
                             Oops! Something went wrong - ${err.message}. Try Again!!!
                           </p>`;
       renderError(errorMessage);
-    }); // Catching the error globally
+    }) // Catching the error globally
+    .finally(() => {
+      countryContainer.style.opacity = 1;
+    });
+  // Finally block runs regardless of the fact if the promise is
+  // fulfilled or not
 };
 
 btnFailFetch.addEventListener("click", function () {
