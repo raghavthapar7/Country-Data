@@ -48,6 +48,9 @@ html {
   justify-content: center;
   column-gap: 8rem;
   row-gap: 4rem;
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+  margin-bottom: 3.6rem;
 }
 
 .country {
@@ -97,4 +100,18 @@ html {
 
 .country-row {
   text-transform: capitalize;
+}
+
+.fail-call {
+  display: block;
+  text-align: center;
+  padding: 1.6rem 3.2rem;
+  text-transform: capitalize;
+  border: none;
+  color: #fff;
+  background-color: #e03131;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 0.4rem;
+  margin: 0 auto;
 }
