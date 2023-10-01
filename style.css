@@ -115,3 +115,10 @@ html {
   border-radius: 0.4rem;
   margin: 0 auto;
 }
+
+.error-text {
+  justify-self: center;
+  font-size: 2.4rem;
+  color: #f03e3e;
+  grid-column: 1/-1;
+}

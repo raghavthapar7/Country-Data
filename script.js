@@ -2,9 +2,16 @@
 
 const app = document.querySelector(".app");
 const countryContainer = document.querySelector(".country-container");
+const btnFailFetch = document.querySelector(".fail-call");
+
+// Render Error Message
+const renderError = function (err) {
+  countryContainer.insertAdjacentHTML("beforeend", err);
+
+  countryContainer.style.opacity = 1;
+};
 
 // New way of doing stuff
-
 const renderCountry = function (data) {
   const html = `<article class="country">
                 <img
@@ -33,6 +40,7 @@ const renderCountry = function (data) {
 
   // Adding the data to the HTML file
   countryContainer.insertAdjacentHTML("beforeend", html);
+  countryContainer.style.opacity = 1;
 };
 
 const getCountryData = function (country) {
@@ -41,10 +49,15 @@ const getCountryData = function (country) {
   // the function that has called it
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then((response) => response.json())
-    .then((data) => renderCountry(data[0]));
+    .then((data) => renderCountry(data[0]))
+    .catch((err) => {
+      let errorMessage = `<p class = "error-text">
+                            Oops! Something went wrong - ${err.message}. Try Again!!!
+                          </p>`;
+      renderError(errorMessage);
+    }); // Catching the error globally
 };
 
-getCountryData("Portugal");
-getCountryData("Republic of India");
-getCountryData("USA");
-getCountryData("Spain");
+btnFailFetch.addEventListener("click", function () {
+  getCountryData("Republic of India");
+});
