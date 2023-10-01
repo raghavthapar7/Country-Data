@@ -3,6 +3,7 @@
 const app = document.querySelector(".app");
 const countryContainer = document.querySelector(".country-container");
 
+/* 
 const showCountryData = function (country) {
   // Making a AJAX call
   const request = new XMLHttpRequest();
@@ -51,3 +52,9 @@ showCountryData("Republic of India");
 showCountryData("USA");
 showCountryData("Portugal");
 showCountryData("Spain");
+ */
+
+// New way of doing stuff
+const request = fetch("https://restcountries.com/v3.1/name/portugal");
+
+console.log(request);
