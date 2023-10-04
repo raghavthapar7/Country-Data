@@ -2,22 +2,18 @@
 
 const app = document.querySelector(".app");
 const countryContainer = document.querySelector(".country-container");
+const btnFailFetch = document.querySelector(".fail-call");
 
-const showCountryData = function (country) {
-  // Making a AJAX call
-  const request = new XMLHttpRequest();
+// Render Error Message
+const renderError = function (err) {
+  countryContainer.insertAdjacentHTML("beforeend", err);
 
-  // Making a GET request with the URL of the API
-  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+  // countryContainer.style.opacity = 1;
+};
 
-  // Sending the request to the API
-  request.send();
-
-  request.addEventListener("load", function () {
-    // Parsing the recieved data by destructuring the response
-    const [data] = JSON.parse(request.responseText);
-
-    const html = `<article class="country">
+// New way of doing stuff
+const renderCountry = function (data) {
+  const html = `<article class="country">
                 <img
                     class="country-flag"
                     src=${data.flags.png}
@@ -42,13 +38,32 @@ const showCountryData = function (country) {
             </article>
 `;
 
-    //   console.log(Object.values(data.currencies)[0].name);
-    console.log(data);
-    countryContainer.insertAdjacentHTML("beforeend", html);
-  });
+  // Adding the data to the HTML file
+  countryContainer.insertAdjacentHTML("beforeend", html);
+  // countryContainer.style.opacity = 1;
+  btnFailFetch.textContent = "Fail the fetch!";
 };
 
-showCountryData("Republic of India");
-showCountryData("USA");
-showCountryData("Portugal");
-showCountryData("Spain");
+const getCountryData = function (country) {
+  // The country data is fetched by the API and once the response is
+  // recieved, we parse it to json and then we return the data to
+  // the function that has called it
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then((response) => response.json())
+    .then((data) => renderCountry(data[0]))
+    .catch((err) => {
+      let errorMessage = `<p class = "error-text">
+                            Oops! Something went wrong - ${err.message}. Try Again!!!
+                          </p>`;
+      renderError(errorMessage);
+    }) // Catching the error globally
+    .finally(() => {
+      countryContainer.style.opacity = 1;
+    });
+  // Finally block runs regardless of the fact if the promise is
+  // fulfilled or not
+};
+
+btnFailFetch.addEventListener("click", function () {
+  getCountryData("Republic of India");
+});
